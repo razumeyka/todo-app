@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		currentTasks = JSON.parse(localStorage.getItem('todo'));
 	}
 	
+	if ( localStorage.getItem('theme') === 'dark' ) {
+		mainWrap.classList.remove('dark-theme');
+		mainWrap.classList.add('light-theme');
+	} else {
+		mainWrap.classList.remove('light-theme');
+		mainWrap.classList.add('dark-theme');
+	}
+
 	function showTasks() {
 		let newTask = "";
 		let taksQty = currentTasks.length;
@@ -250,9 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (mainWrap.classList.contains("dark-theme")) {
 			mainWrap.classList.remove('dark-theme');
 			mainWrap.classList.add('light-theme');
+			localStorage.setItem('theme', 'dark');
 		} else {
 			mainWrap.classList.remove('light-theme');
 			mainWrap.classList.add('dark-theme');
+			localStorage.setItem('theme', 'light');
 		}
 	});
 	
